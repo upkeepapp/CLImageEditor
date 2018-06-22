@@ -41,6 +41,22 @@
     
 }
 
+//workaround for https://github.com/yackle/CLImageEditor/issues/186
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [self hideStatusBar:true];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
+  [self hideStatusBar:false];
+}
+
+- (void)hideStatusBar: (BOOL)hide {
+  [[UIApplication sharedApplication] setStatusBarHidden:hide];
+}
+//end of workaround
+
 - (void)refreshToolSettings
 {
     
